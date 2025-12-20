@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Blog | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9fafb;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .logo i {
+            font-size: 32px;
+            color: #ffd166;
+        }
+
+        .add-post-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(247, 37, 133, 0.3);
+        }
+
+        .add-post-btn:hover {
+            background-color: #e11570;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(247, 37, 133, 0.4);
+        }
+
+        /* Blog Posts Grid */
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .page-subtitle {
+            color: var(--gray-color);
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .post-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .post-image {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .post-card:hover .post-image img {
+            transform: scale(1.05);
+        }
+
+        .post-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            line-height: 1.3;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .post-author i {
+            color: var(--primary-color);
+        }
+
+        .post-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .post-date i {
+            color: var(--accent-color);
+        }
+
+        .post-excerpt {
+            color: #555;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .action-btn {
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+            font-size: 15px;
+        }
+
+        .view-btn {
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+        }
+
+        .view-btn:hover {
+            background-color: #dde1e7;
+        }
+
+        .edit-btn {
+            background-color: #4cc9f0;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #3ab4d9;
+        }
+
+        .delete-btn {
+            background-color: #f72585;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #e11570;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-top: 30px;
+        }
+
+        .empty-state i {
+            font-size: 60px;
+            color: var(--light-gray);
+            margin-bottom: 20px;
+        }
+
+        .empty-state h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .empty-state p {
+            color: var(--gray-color);
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        /* Form Styles */
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin-top: 30px;
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--dark-color);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .submit-btn, .cancel-btn {
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .cancel-btn {
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+        }
+
+        .cancel-btn:hover {
+            background-color: #dde1e7;
+        }
+
+        .file-input-container {
+            border: 2px dashed var(--light-gray);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-input-container:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.03);
+        }
+
+        .file-input-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .file-input-label i {
+            font-size: 40px;
+            color: var(--primary-color);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+
+        /* Post Detail View */
+        .post-detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .detail-image {
+            height: 400px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .detail-content {
+            padding: 40px;
+        }
+
+        .detail-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+
+        .detail-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--gray-color);
+        }
+
+        .detail-author, .detail-dates {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-author span, .detail-dates span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-author i {
+            color: var(--primary-color);
+        }
+
+        .detail-dates i {
+            color: var(--accent-color);
+        }
+
+        .detail-body {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .detail-body p {
+            margin-bottom: 20px;
+        }
+
+        .detail-actions {
+            display: flex;
+            gap: 15px;
+            padding-top: 30px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .form-container, .post-detail-container {
+                padding: 25px;
+            }
+            
+            .detail-title {
+                font-size: 32px;
+            }
+            
+            .form-actions, .detail-actions, .post-actions {
+                flex-direction: column;
+            }
+            
+            .detail-image {
+                height: 250px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .modal-text {
+            margin-bottom: 25px;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .modal-confirm {
+            background-color: #f72585;
+            color: white;
+        }
+
+        .modal-confirm:hover {
+            background-color: #e11570;
+        }
+
+        .modal-cancel {
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+        }
+
+        .modal-cancel:hover {
+            background-color: #dde1e7;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            color: var(--secondary-color);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Blog Listing Page -->
+    <div id="home-page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-pen-nib"></i>
+                        <span>Beautiful Blog</span>
+                    </div>
+                    <button id="add-post-btn" class="add-post-btn">
+                        <i class="fas fa-plus-circle"></i>
+                        Add New Post
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <h1 class="page-title">Latest Blog Posts</h1>
+            <p class="page-subtitle">Discover stories, ideas, and knowledge from our community</p>
+
+            <!-- Blog Posts Grid -->
+            <div id="posts-container" class="posts-grid">
+                <!-- Posts will be dynamically inserted here -->
+            </div>
+
+            <!-- Empty State (shown when no posts) -->
+            <div id="empty-state" class="empty-state hidden">
+                <i class="fas fa-blog"></i>
+                <h2>No blog posts yet</h2>
+                <p>Be the first to share your thoughts and ideas with our community.</p>
+                <button id="empty-add-post-btn" class="add-post-btn">
+                    <i class="fas fa-plus-circle"></i>
+                    Create Your First Post
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Post Form Page -->
+    <div id="form-page" class="hidden">
+        <div class="container">
+            <a href="#" id="form-back-btn" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Posts
+            </a>
+            <div class="form-container">
+                <h2 class="form-title" id="form-page-title">Add New Blog Post</h2>
+                <form id="blog-form">
+                    <div class="form-group">
+                        <label for="post-image" class="form-label">Featured Image (Optional)</label>
+                        <div class="file-input-container">
+                            <label for="post-image" class="file-input-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Click to upload an image</span>
+                                <span class="file-name" id="file-name">No file selected</span>
+                                <input type="file" id="post-image" class="file-input" accept="image/*">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-title" class="form-label">Title</label>
+                        <input type="text" id="post-title" class="form-input" placeholder="Enter a catchy title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-author" class="form-label">Author</label>
+                        <input type="text" id="post-author" class="form-input" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-content" class="form-label">Content</label>
+                        <textarea id="post-content" class="form-textarea" placeholder="Write your blog post content here..." required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Publish Post
+                        </button>
+                        <button type="button" id="cancel-form-btn" class="cancel-btn">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Detail View Page -->
+    <div id="detail-page" class="hidden">
+        <div class="container">
+            <a href="#" id="detail-back-btn" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Posts
+            </a>
+            <div id="post-detail-container" class="post-detail-container">
+                <!-- Post detail will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal-overlay hidden">
+        <div class="modal">
+            <h3 class="modal-title">Delete Post</h3>
+            <p class="modal-text">Are you sure you want to delete this blog post? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="confirm-delete-btn" class="modal-btn modal-confirm">Delete</button>
+                <button id="cancel-delete-btn" class="modal-btn modal-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Blog posts data (simulating a database)
+        let blogPosts = [
+            {
+                id: 1,
+                title: "The Art of Mindful Living",
+                author: "Alex Johnson",
+                content: "Mindful living is about embracing each moment with intention and awareness. It's not just a practice but a way of life that can transform how we experience the world around us. In today's fast-paced society, we often rush through our days without truly experiencing them. By cultivating mindfulness, we can find peace and clarity even in the midst of chaos. This article explores practical techniques for integrating mindfulness into daily routines, from mindful eating to conscious communication. We'll examine how small, consistent practices can lead to profound changes in mental wellbeing, relationships, and overall life satisfaction.",
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                created_at: "2023-10-15",
+                updated_at: "2023-10-15"
+            },
+            {
+                id: 2,
+                title: "Sustainable Eating for a Healthier Planet",
+                author: "Maria Chen",
+                content: "Our food choices have a profound impact on both our health and the environment. Sustainable eating involves selecting foods that are healthy for our bodies and sustainable for the earth. This approach considers the entire lifecycle of food—from how it's grown and harvested to how it's packaged and transported. In this comprehensive guide, we'll explore the principles of sustainable eating, including plant-forward diets, seasonal eating, reducing food waste, and supporting local farmers. You'll discover how making conscious food choices can reduce your carbon footprint, support biodiversity, and contribute to a more resilient food system.",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                created_at: "2023-09-22",
+                updated_at: "2023-10-05"
+            },
+            {
+                id: 3,
+                title: "The Future of Remote Work Technology",
+                author: "David Kim",
+                content: "Remote work has evolved from a temporary solution to a permanent fixture in the modern workplace. As organizations adapt to this new reality, technology is playing an increasingly crucial role in bridging the physical distance between team members. This article examines the latest tools and platforms that are shaping the future of remote collaboration. We'll explore advancements in virtual reality meeting spaces, AI-powered productivity tools, asynchronous communication platforms, and digital workspace solutions. Additionally, we'll discuss the human factors of remote work technology—how to maintain team cohesion, foster innovation, and prevent burnout in a distributed workforce.",
+                image: "",
+                created_at: "2023-11-03",
+                updated_at: "2023-11-10"
+            }
+        ];
+
+        // DOM Elements
+        const homePage = document.getElementById('home-page');
+        const formPage = document.getElementById('form-page');
+        const detailPage = document.getElementById('detail-page');
+        const deleteModal = document.getElementById('delete-modal');
+        
+        const postsContainer = document.getElementById('posts-container');
+        const emptyState = document.getElementById('empty-state');
+        const postDetailContainer = document.getElementById('post-detail-container');
+        
+        const addPostBtn = document.getElementById('add-post-btn');
+        const emptyAddPostBtn = document.getElementById('empty-add-post-btn');
+        const formBackBtn = document.getElementById('form-back-btn');
+        const detailBackBtn = document.getElementById('detail-back-btn');
+        const cancelFormBtn = document.getElementById('cancel-form-btn');
+        
+        const blogForm = document.getElementById('blog-form');
+        const postTitleInput = document.getElementById('post-title');
+        const postAuthorInput = document.getElementById('post-author');
+        const postContentInput = document.getElementById('post-content');
+        const postImageInput = document.getElementById('post-image');
+        const fileNameDisplay = document.getElementById('file-name');
+        const formPageTitle = document.getElementById('form-page-title');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+        const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+        
+        // State variables
+        let currentPostId = null;
+        let postToDeleteId = null;
+        let isEditMode = false;
+        let selectedImageFile = null;
+
+        // Initialize the app
+        function initApp() {
+            renderPosts();
+            setupEventListeners();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Navigation
+            addPostBtn.addEventListener('click', showAddForm);
+            emptyAddPostBtn.addEventListener('click', showAddForm);
+            formBackBtn.addEventListener('click', () => showPage('home-page'));
+            detailBackBtn.addEventListener('click', () => showPage('home-page'));
+            cancelFormBtn.addEventListener('click', () => showPage('home-page'));
+            
+            // Form submission
+            blogForm.addEventListener('submit', handleFormSubmit);
+            
+            // Image file input
+            postImageInput.addEventListener('change', handleImageSelect);
+            
+            // Delete modal
+            confirmDeleteBtn.addEventListener('click', handleDeleteConfirm);
+            cancelDeleteBtn.addEventListener('click', () => deleteModal.classList.add('hidden'));
+        }
+
+        // Render all blog posts
+        function renderPosts() {
+            postsContainer.innerHTML = '';
+            
+            if (blogPosts.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+            
+            blogPosts.forEach(post => {
+                const postCard = createPostCard(post);
+                postsContainer.appendChild(postCard);
+            });
+        }
+
+        // Create a post card element
+        function createPostCard(post) {
+            const card = document.createElement('div');
+            card.className = 'post-card';
+            
+            // Format dates
+            const createdDate = new Date(post.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            const updatedDate = new Date(post.updated_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Truncate content for preview
+            const truncatedContent = post.content.length > 150 
+                ? post.content.substring(0, 150) + '...' 
+                : post.content;
+            
+            // Default image if none provided
+            const imageUrl = post.image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
+            
+            card.innerHTML = `
+                <div class="post-image">
+                    <img src="${imageUrl}" alt="${post.title}">
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title">${post.title}</h3>
+                    <div class="post-meta">
+                        <div class="post-author">
+                            <i class="fas fa-user"></i>
+                            <span>${post.author}</span>
+                        </div>
+                        <div class="post-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>${createdDate}</span>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">${truncatedContent}</p>
+                    <div class="post-actions">
+                        <button class="action-btn view-btn" data-id="${post.id}">
+                            <i class="fas fa-eye"></i>
+                            View
+                        </button>
+                        <button class="action-btn edit-btn" data-id="${post.id}">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="action-btn delete-btn" data-id="${post.id}">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners to action buttons
+            const viewBtn = card.querySelector('.view-btn');
+            const editBtn = card.querySelector('.edit-btn');
+            const deleteBtn = card.querySelector('.delete-btn');
+            
+            viewBtn.addEventListener('click', () => showPostDetail(post.id));
+            editBtn.addEventListener('click', () => showEditForm(post.id));
+            deleteBtn.addEventListener('click', () => showDeleteModal(post.id));
+            
+            return card;
+        }
+
+        // Show post detail view
+        function showPostDetail(id) {
+            const post = blogPosts.find(p => p.id === id);
+            if (!post) return;
+            
+            // Format dates
+            const createdDate = new Date(post.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const updatedDate = new Date(post.updated_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            // Default image if none provided
+            const imageUrl = post.image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
+            
+            postDetailContainer.innerHTML = `
+                ${post.image ? `
+                <div class="detail-image">
+                    <img src="${imageUrl}" alt="${post.title}">
+                </div>
+                ` : ''}
+                <div class="detail-content">
+                    <h1 class="detail-title">${post.title}</h1>
+                    <div class="detail-meta">
+                        <div class="detail-author">
+                            <span><i class="fas fa-user"></i> ${post.author}</span>
+                        </div>
+                        <div class="detail-dates">
+                            <span><i class="fas fa-calendar-plus"></i> Created: ${createdDate}</span>
+                            <span><i class="fas fa-calendar-check"></i> Updated: ${updatedDate}</span>
+                        </div>
+                    </div>
+                    <div class="detail-body">
+                        ${post.content.split('\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
+                    </div>
+                    <div class="detail-actions">
+                        <button class="action-btn edit-btn" id="detail-edit-btn" data-id="${post.id}">
+                            <i class="fas fa-edit"></i>
+                            Edit Post
+                        </button>
+                        <button class="action-btn delete-btn" id="detail-delete-btn" data-id="${post.id}">
+                            <i class="fas fa-trash"></i>
+                            Delete Post
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners to action buttons in detail view
+            document.getElementById('detail-edit-btn').addEventListener('click', () => showEditForm(post.id));
+            document.getElementById('detail-delete-btn').addEventListener('click', () => showDeleteModal(post.id));
+            
+            showPage('detail-page');
+        }
+
+        // Show add post form
+        function showAddForm() {
+            isEditMode = false;
+            currentPostId = null;
+            selectedImageFile = null;
+            
+            // Reset form
+            blogForm.reset();
+            fileNameDisplay.textContent = 'No file selected';
+            formPageTitle.textContent = 'Add New Blog Post';
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Publish Post';
+            
+            showPage('form-page');
+        }
+
+        // Show edit post form
+        function showEditForm(id) {
+            const post = blogPosts.find(p => p.id === id);
+            if (!post) return;
+            
+            isEditMode = true;
+            currentPostId = id;
+            selectedImageFile = null;
+            
+            // Populate form with post data
+            postTitleInput.value = post.title;
+            postAuthorInput.value = post.author;
+            postContentInput.value = post.content;
+            fileNameDisplay.textContent = post.image ? 'Image already uploaded' : 'No file selected';
+            
+            formPageTitle.textContent = 'Edit Blog Post';
+            submitBtn.innerHTML = '<i class="fas fa-save"></i> Update Post';
+            
+            showPage('form-page');
+        }
+
+        // Handle form submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const title = postTitleInput.value.trim();
+            const author = postAuthorInput.value.trim();
+            const content = postContentInput.value.trim();
+            
+            if (!title || !author || !content) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            const now = new Date().toISOString().split('T')[0];
+            
+            if (isEditMode) {
+                // Update existing post
+                const postIndex = blogPosts.findIndex(p => p.id === currentPostId);
+                if (postIndex !== -1) {
+                    blogPosts[postIndex] = {
+                        ...blogPosts[postIndex],
+                        title,
+                        author,
+                        content,
+                        updated_at: now
+                    };
+                    
+                    // Handle image if a new one was selected
+                    if (selectedImageFile) {
+                        // In a real app, you would upload the file to a server
+                        // For this demo, we'll create a local URL
+                        const imageUrl = URL.createObjectURL(selectedImageFile);
+                        blogPosts[postIndex].image = imageUrl;
+                    }
+                }
+            } else {
+                // Create new post
+                const newPost = {
+                    id: blogPosts.length > 0 ? Math.max(...blogPosts.map(p => p.id)) + 1 : 1,
+                    title,
+                    author,
+                    content,
+                    image: selectedImageFile ? URL.createObjectURL(selectedImageFile) : '',
+                    created_at: now,
+                    updated_at: now
+                };
+                
+                blogPosts.push(newPost);
+            }
+            
+            // Reset form and return to home page
+            blogForm.reset();
+            fileNameDisplay.textContent = 'No file selected';
+            selectedImageFile = null;
+            
+            renderPosts();
+            showPage('home-page');
+        }
+
+        // Handle image file selection
+        function handleImageSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (!file.type.startsWith('image/')) {
+                    alert('Please select an image file.');
+                    postImageInput.value = '';
+                    fileNameDisplay.textContent = 'No file selected';
+                    return;
+                }
+                
+                selectedImageFile = file;
+                fileNameDisplay.textContent = file.name;
+            }
+        }
+
+        // Show delete confirmation modal
+        function showDeleteModal(id) {
+            postToDeleteId = id;
+            deleteModal.classList.remove('hidden');
+        }
+
+        // Handle delete confirmation
+        function handleDeleteConfirm() {
+            if (postToDeleteId) {
+                blogPosts = blogPosts.filter(post => post.id !== postToDeleteId);
+                renderPosts();
+                deleteModal.classList.add('hidden');
+                
+                // If we're on the detail page, go back to home
+                if (!detailPage.classList.contains('hidden')) {
+                    showPage('home-page');
+                }
+                
+                postToDeleteId = null;
+            }
+        }
+
+        // Show a specific page and hide others
+        function showPage(pageId) {
+            // Hide all pages
+            homePage.classList.add('hidden');
+            formPage.classList.add('hidden');
+            detailPage.classList.add('hidden');
+            
+            // Show the requested page
+            document.getElementById(pageId).classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize the application when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
